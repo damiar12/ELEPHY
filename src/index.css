@@ -67,7 +67,7 @@ nav{max-width:1200px;margin:0 auto;padding:1.2rem 2rem;display:flex;justify-cont
     .hero{padding:140px 1rem 60px}
     .nav-links{display:none}
 }
-.hero-content h1{font-size:3.5rem;line-height:1.1;margin-bottom:1.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-content h1{font-size:3.5rem;line-height:1.1;margin-bottom:1.5rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;overflow-wrap:break-word;word-wrap:break-word;max-width:100%}
 .hero-content p{font-size:1.2rem;color:var(--text-gray);margin-bottom:2rem;max-width:500px}
 .hero-buttons{display:flex;gap:1rem}
 .btn-primary{background:var(--gradient);color:white;padding:1rem 2rem;border-radius:8px;font-weight:600;border:none;cursor:pointer;box-shadow:0 4px 15px rgba(79,70,229,0.3)}
@@ -120,4 +120,12 @@ footer{background:var(--secondary);color:white;padding:1.25rem 2rem 1.5rem;text-
   .hero-content p{margin:0 auto 2rem}
   .hero-buttons{justify-content:center}
   .nav-links{display:none}
+}
+
+@media (max-width:1024px){
+    .hero-content h1{font-size:2.8rem}
+}
+
+@media (max-width:768px){
+    .hero-content h1{font-size:2rem}
 }

@@ -65,10 +65,10 @@ export default function Servicios() {
       tags: ["Figma", "Prototyping", "User Research"]
     },
     {
-      icon: "🛡️",
-      title: "Ciberseguridad Corporativa",
-      description: "Protección integral para tus activos digitales. Auditorías de penetración, cumplimiento normativo (GDPR) y monitoreo 24/7.",
-      tags: ["Auditorías", "ISO 27001", "Pentesting"]
+      icon: "📊",
+      title: "Business Intelligence & Analytics",
+      description: "Transformamos tus datos en decisiones: dashboards, reporting y modelos dimensionales para obtener insights accionables.",
+      tags: ["Power BI", "Tableau", "Oracle BI"]
     }
   ]
 
