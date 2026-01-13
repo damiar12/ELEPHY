@@ -6,84 +6,86 @@ const TechCategory = ({ title, techs, note }) => (
       {title}
     </h3>
     {note && <p style={{ color: 'var(--text-gray)', margin: '0.5rem 0 1rem', maxWidth: '720px' }}>{note}</p>}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.5rem' }}>
-        {techs.map((t) => (
-          <div
-            key={t.name}
-            style={{
-              background: 'white',
-              padding: '1.25rem',
-              borderRadius: '12px',
-              boxShadow: 'var(--shadow-sm)',
-              border: '1px solid #F1F5F9',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              transition: '0.18s',
-              minHeight: 56
-            }}
-            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-3px)'}
-            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-          >
-            <div style={{ width: 40, height: 40, flex: '0 0 40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {t.logo ? (
-                <img src={t.logo} alt={t.name} style={{ width: 36, height: 36, objectFit: 'contain' }} loading="lazy" />
-              ) : (
-                <div style={{ fontSize: '1.35rem' }}>{t.icon}</div>
-              )}
-            </div>
-            <span style={{
-              fontWeight: 600,
-              color: 'var(--secondary)',
-              fontSize: '0.95rem',
-              lineHeight: '1.15rem',
-              flex: 1,
-              wordBreak: 'break-word',
-              overflowWrap: 'break-word'
-            }}>{t.name}</span>
+
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.5rem' }}>
+      {techs.map((t) => (
+        <div
+          key={t.name}
+          style={{
+            background: 'white',
+            padding: '1.25rem',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow-sm)',
+            border: '1px solid #F1F5F9',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            transition: '0.18s',
+            minHeight: 56
+          }}
+          onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-3px)'}
+          onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+        >
+          <div style={{ width: 40, height: 40, flex: '0 0 40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {t.logo ? (
+              <img src={t.logo} alt={t.name} style={{ width: 36, height: 36, objectFit: 'contain' }} loading="lazy" />
+            ) : (
+              <div style={{ fontSize: '1.35rem' }}>{t.icon}</div>
+            )}
           </div>
-        ))}
-      </div>
+          <span style={{
+            fontWeight: 600,
+            color: 'var(--secondary)',
+            fontSize: '0.95rem',
+            lineHeight: '1.15rem',
+            flex: 1,
+            wordBreak: 'break-word',
+            overflowWrap: 'break-word'
+          }}>{t.name}</span>
+        </div>
+      ))}
+    </div>
   </div>
 )
 
 export default function Tecnologias() {
   const stack = {
     frontend: [
-      { name: 'React.js', icon: '⚛️' },
-      { name: 'Vue 3', icon: '🟢' },
-      { name: 'Next.js', icon: '▲' },
-      { name: 'Tailwind CSS', icon: '🎨' },
-      { name: 'TypeScript', icon: '📘' }
+      { name: 'React.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'Vue 3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+      { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+      { name: 'Streamlit', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/streamlit.svg' },
+      { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' }
     ],
     backend: [
-      { name: 'Python', icon: '🐍' },
-      { name: 'Node.js', icon: '🟢' },
-      { name: 'FastAPI', icon: '⚡' },
-      { name: 'Postgre', icon: '🐘' },
-      { name: 'MySQL', icon: '🛢️' },
-      { name: 'Oracle DB', icon: '🗄️' },
-      { name: 'MongoDB', icon: '🍃' },
-      { name: 'Redis', icon: '🔁' },
-      { name: 'GraphQL', icon: '◈' }
+      { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'FastAPI', logo: 'https://img.icons8.com/color/48/000000/api.png' },
+      { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+      { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'Oracle DB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg' },
+      { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+      { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+      { name: 'GraphQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' }
     ],
     businessIntelligence: [
-      { name: 'Oracle BI', icon: '📊' },
-      { name: 'Power BI', icon: '📈' },
-      { name: 'Tableau', icon: '📉' },
-      { name: 'Qlik', icon: '🧭' }
+      { name: 'Power BI', logo: 'https://img.icons8.com/color/48/000000/power-bi.png' },
+      { name: 'Tableau', logo: 'https://img.icons8.com/color/48/000000/tableau-software.png' },
+      { name: 'QlikView', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qlik.svg' },
+      { name: 'Chart.js', logo: 'https://img.icons8.com/color/48/000000/combo-chart.png' },
+      { name: 'Looker', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/looker.svg' }
     ],
     cloud: [
-      { name: 'AWS', icon: '☁️' },
-      { name: 'Azure', icon: '🔷' },
-      { name: 'Docker', icon: '🐋' },
-      { name: 'Kubernetes', icon: '☸️' }
+      { name: 'AWS', logo: 'https://img.icons8.com/color/48/000000/amazon-web-services.png' },
+      { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
+      { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+      { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' }
     ],
     marketing: [
-      { name: 'Facebook / Meta Ads', icon: '📣' },
-      { name: 'Google Ads', icon: '🔎' },
-      { name: 'Market Analysis', icon: '📋' },
-      { name: 'Content creator', icon: '🎬' }
+      { name: 'Facebook / Meta Ads', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg' },
+      { name: 'Google Ads', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
+      { name: 'Market Analysis', logo: 'https://img.icons8.com/color/48/000000/combo-chart.png' },
+      { name: 'Content creator', logo: 'https://img.icons8.com/color/48/000000/camera.png' }
     ]
   }
 

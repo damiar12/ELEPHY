@@ -6,9 +6,9 @@ const IndustryShowcase = ({ title, description, benefits, align = 'left', color 
     <div style={{ 
       display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center', marginBottom: '6rem' 
     }}>
-      <div style={{ order: isLeft ? 1 : 2 }}>
+      <div style={{ order: isLeft ? 1 : 2, position: 'relative' }}>
         <div style={{ 
-          width: '50px', height: '50px', borderRadius: '50%', background: color, opacity: 0.1, position: 'absolute' 
+          width: '50px', height: '50px', borderRadius: '50%', background: color, opacity: 0.1, position: 'absolute', top: '-10px', left: '-10px'
         }}></div>
         <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span style={{ fontSize: '2.5rem' }}>{icon}</span> {title}
@@ -48,13 +48,13 @@ export default function Industrias() {
             color: 'var(--accent)', fontWeight: 'bold', letterSpacing: '2px', 
             textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' 
           }}>
-            Casos de Éxito
+            Soluciones de nicho probadas
           </span>
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', maxWidth: '800px', marginInline: 'auto' }}>
-            Transformando sectores clave
+            Rentabilidad medible en sectores clave
           </h1>
           <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto' }}>
-            Adaptamos nuestra tecnología a las reglas de negocio específicas de tu industria.
+            Ayudamos a PYMEs a facturar más mediante automatización y estrategia digital.
           </p>
         </div>
       </section>
@@ -66,18 +66,18 @@ export default function Industrias() {
             align="left"
             color="#4F46E5"
             icon="📁"
-            description="Digitalizamos procesos administrativos para gestorías y asesorías: facturación, conciliación y gestión documental."
-            benefits={["Automatización de facturas", "Gestión documental segura", "Integración con ERPs locales"]}
+            description="Digitalizamos procesos administrativos: facturación automática, conciliación y gestión documental segura. Reduce tiempos y errores humanos."
+            benefits={["Automatización de facturas y conciliaciones", "Gestión documental segura (cumplimiento RGPD)", "Integración con ERPs locales y la Agencia Tributaria"]}
             image={'/images/jambosenmesacongrafico.png'}
           />
 
           <IndustryShowcase 
-            title="Negocios Tradicionales"
+            title="Negocios tradicionales (Construcción, Fontanería, Carpintería)"
             align="right"
             color="#10B981"
             icon="🔨"
-            description="Soluciones ideales para carpinterías, fontanerías y comercios locales: digitaliza reservas, gestión de clientes y presupuestos."
-            benefits={["Presupuestos y órdenes digitales", "Agenda y recordatorios", "Catálogo y pedidos simples"]}
+            description="Soluciones para comercios locales: digitaliza reservas, gestión de clientes y presupuestos. Ahorra papel y tiempo, gana profesionalidad."
+            benefits={["Presupuestos y órdenes digitales con firma electrónica", "Agenda y recordatorios automáticos", "Catálogo digital y pedidos simples"]}
             image={'/images/bakery.png'}
           />
 
@@ -86,8 +86,8 @@ export default function Industrias() {
             align="left"
             color="#4F46E5"
             icon="🏭"
-            description="Automatizamos cadenas de suministro con IoT y dashboards en tiempo real. Reducimos tiempos de entrega y optimizamos stock."
-            benefits={["Trazabilidad end-to-end", "Gestión de flotas inteligente", "Integración con ERPs (SAP, Odoo)"]}
+            description="Automatizamos cadenas de suministro con IoT y dashboards en tiempo real. Reduce tiempos de entrega hasta un 30% y optimiza stock."
+            benefits={["Trazabilidad end-to-end con RFID/IoT", "Gestión de flotas inteligente (geoloc + consumo)", "Integración con ERPs (SAP, Odoo, Microsoft Dynamics)"]}
             image={'/images/carreteriaslogisitca.png'}
           />
 
@@ -96,8 +96,8 @@ export default function Industrias() {
             align="right"
             color="#EC4899"
             icon="🛍️"
-            description="Experiencias de compra omnicanal. Unificamos tu tienda física y online para maximizar conversiones."
-            benefits={["POS (Punto de Venta) personalizado", "Gestión de inventario unificada", "Programas de lealtad"]}
+            description="Experiencias de compra omnicanal. Unificamos tu tienda física y online para maximizar conversiones y fidelizar clientes."
+            benefits={["POS (Punto de Venta) personalizado y sincronizado", "Gestión de inventario unificada (no más sobreventa)", "Programas de lealtad y cupones automáticos"]}
             image={'/images/Shooping-compras.png'}
           />
 

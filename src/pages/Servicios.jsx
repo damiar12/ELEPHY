@@ -36,39 +36,39 @@ export default function Servicios() {
   const servicios = [
     {
       icon: "💻",
-      title: "Desarrollo Web Full-Stack",
-      description: "Creamos plataformas web progresivas (PWA) y sistemas de gestión complejos. Nos enfocamos en la velocidad, SEO y escalabilidad desde el primer día.",
-      tags: ["React", "Next.js", "Node.js"]
+      title: "Service as a Software",
+      description: "Desarrollo de software a medida adaptado a tus necesidades específicas. Creamos soluciones personalizadas que automatizan y optimizan tus procesos de negocio.",
+      tags: ["Python", "React", "Node.js"]
     },
     {
-      icon: "📱",
+      icon: "🤖",
+      title: "Automatización & IA",
+      description: "Agentes inteligentes que atienden a tus clientes y gestionan tus datos 24/7. Chatbots, análisis predictivo y automatización de procesos complejos.",
+      tags: ["Agentes IA", "ML" , "Computer Vision"]
+    },
+    {
+      icon: "⚠️",
+      title: "Rescate Tecnológico",
+      description: "¿Tu sistema actual falla? Auditamos, reparamos y eliminamos tu deuda técnica para que escales sin miedo. Refactoring y migración cloud.",
+      tags: ["Refactoring", "Azure", "Google Cloud"]
+    },
+    {
+      icon: "📊",
+      title: "Business Intelligence & Analítica",
+      description: "Transformamos tus datos en decisiones: dashboards, reporting y modelos dimensionales para obtener insights accionables.",
+      tags: ["Power BI", "Tableau", "Oracle BI"]
+    },
+    {
+      icon: "💸",
       title: "Marketing Digital & Facebook Ads",
       description: "Aumentamos tu visibilidad y ventas con campañas pagadas en Facebook/Meta, optimización de conversiones y seguimiento ROI.",
       tags: ["Facebook Ads", "Google Ads", "SEO"]
-    },
-    {
-      icon: "☁️",
-      title: "Arquitectura Cloud & DevOps",
-      description: "Infraestructura como código. Diseñamos arquitecturas resilientes en AWS o Azure que escalan automáticamente según tu demanda.",
-      tags: ["AWS", "Docker", "Kubernetes"]
-    },
-    {
-      icon: "🧠",
-      title: "Inteligencia Artificial & Datos",
-      description: "Integramos modelos de ML para análisis predictivo, chatbots inteligentes y automatización de procesos complejos.",
-      tags: ["Python", "TensorFlow", "OpenAI API"]
     },
     {
       icon: "🎨",
       title: "Diseño de Producto (UI/UX)",
       description: "No solo programamos, diseñamos experiencias. Prototipado, sistemas de diseño y testing con usuarios para asegurar la usabilidad.",
       tags: ["Figma", "Prototyping", "User Research"]
-    },
-    {
-      icon: "📊",
-      title: "Business Intelligence & Analytics",
-      description: "Transformamos tus datos en decisiones: dashboards, reporting y modelos dimensionales para obtener insights accionables.",
-      tags: ["Power BI", "Tableau", "Oracle BI"]
     }
   ]
 
@@ -84,12 +84,12 @@ export default function Servicios() {
             Nuestros Servicios
           </span>
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', maxWidth: '800px', marginInline: 'auto' }}>
-            Ingeniería de software de <span style={{ 
+            Tu Ecosistema Digital <span style={{ 
               background: 'var(--gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' 
-            }}>clase mundial</span>
+            }}>360º</span>
           </h1>
           <p style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto' }}>
-            Ayudamos a equipos ambiciosos a construir productos digitales que definen el futuro.
+            Sistemas diseñados para vender, no solo para "estar en internet".
           </p>
         </div>
       </section>
@@ -111,10 +111,10 @@ export default function Servicios() {
           <div>
             <h2 className="section-title" style={{ textAlign: 'left' }}>Metodología Ágil y Transparente</h2>
             <p className="section-subtitle" style={{ textAlign: 'left', margin: '0 0 2rem 0' }}>
-              Olvídate del "caja negra". Trabajamos con sprints semanales, demos continuas y código limpio que tu equipo podrá mantener.
+              Olvídate del "caja negra". Entregamos MVPs en semanas, no en meses.
             </p>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {['Comunicación diaria vía Slack/Teams', 'Entregables cada 2 semanas', 'QA y Testing automatizado'].map(item => (
+              {['Diagnóstico de rentabilidad antes de escribir código', 'Entregables funcionales cada 2 semanas', 'Soporte proactivo y evolución continua'].map(item => (
                 <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem' }}>
                   <span style={{ color: 'var(--accent)' }}>✓</span> {item}
                 </li>

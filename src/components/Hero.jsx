@@ -6,11 +6,10 @@ export default function Hero(){
       <div className="hero-content">
         <h1>Transforma tus procesos y lidera el cambio digital.</h1>
         <p>
-          Desde el desarrollo de software a medida hasta la ciberseguridad integral. 
-          Escuchamos, analizamos y proponemos la tecnología exacta que tu Pyme o Startup necesita para despegar.
+          Ayudamos a PYMEs a facturar más y trabajar menos medianteIA, automatización y estrategia digital.
         </p>
         <div className="hero-buttons">
-          <button className="btn-primary" onClick={() => window.location.hash = '#contacto'}>Empezar Proyecto</button>
+          <button className="btn-primary" onClick={() => window.location.hash = '#contacto'}>Auditoría gratuita</button>
         </div>
       </div>
       <div className="hero-visual" style={{ background: 'transparent', boxShadow: 'none', padding: 0 }}>
