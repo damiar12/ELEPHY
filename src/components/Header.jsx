@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
 
 export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const headerRef = useRef(null)
+
+  useGSAP(() => {
+    // 1. Drop down entrance when the site loads
+    gsap.from(headerRef.current, {
+      y: '-100%',
+      duration: 0.8,
+      ease: 'power3.out'
+    })
+
+    // 2. Shrink and blur increasing on scroll
+    ScrollTrigger.create({
+      start: 'top -50',
+      end: 99999,
+      toggleClass: {
+        className: 'header-scrolled',
+        targets: headerRef.current
+      }
+    })
+  }, { scope: headerRef })
 
   return (
-    <header className="header" style={{background: '#ffffff'}}>
+    <header className="header" ref={headerRef}>
       <nav>
         <Link to="/" className="logo header-logo">
           <img src="/images/logo-eleephy.png" alt="Elephy" />
