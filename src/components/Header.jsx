@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
 
@@ -8,6 +8,11 @@ export default function Header() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const headerRef = useRef(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname])
 
   useGSAP(() => {
     gsap.from(headerRef.current, {
@@ -29,10 +34,27 @@ export default function Header() {
   return (
     <header className="header" ref={headerRef}>
       <nav>
-        <Link to="/" className="logo header-logo">
+        <Link to="/" className="logo header-logo" aria-label="Ir al inicio">
           <img src="/images/logoelephy.png" alt="Elephy Desarrollo de Software" />
         </Link>
-        <ul className="nav-links">
+
+        <button
+          className={`mobile-menu-toggle${isMenuOpen ? ' is-open' : ''}`}
+          type="button"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMenuOpen}
+          aria-controls="main-navigation"
+          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <ul
+          className={`nav-links${isMenuOpen ? ' mobile-open' : ''}`}
+          id="main-navigation"
+        >
           {!isHome && <li><Link to="/">Inicio</Link></li>}
           <li><Link to="/servicios">Servicios</Link></li>
           <li><Link to="/industrias">Industrias</Link></li>
