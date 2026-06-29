@@ -1,5 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
+import TechSphere3D from '../components/TechSphere3D'
+import HandwrittenHighlight from '../components/HandwrittenHighlight'
 
 const TechCategory = ({ title, techs, note }) => (
   <div className="tech-category" style={{ marginBottom: '4rem' }}>
@@ -50,6 +52,43 @@ const TechCategory = ({ title, techs, note }) => (
 
 export default function Tecnologias() {
   const containerRef = useRef(null)
+  const viewerRef = useRef(null)
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+
+  useEffect(() => {
+    // 1. Dynamic Script Injection for Spline Viewer
+    const scriptId = 'spline-viewer-script'
+    let script = document.getElementById(scriptId)
+
+    if (!script) {
+      script = document.createElement('script')
+      script.id = scriptId
+      script.type = 'module'
+      script.src = 'https://unpkg.com/@splinetool/viewer@1.9.5/build/spline-viewer.js'
+      script.async = true
+      script.onload = () => setScriptLoaded(true)
+      document.head.appendChild(script)
+    } else {
+      setScriptLoaded(true)
+    }
+
+    // 2. Poll and remove Spline Watermark Logo inside the Shadow DOM
+    const removeWatermark = () => {
+      const viewer = viewerRef.current || document.querySelector('spline-viewer')
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.getElementById('logo')
+        if (logo) {
+          logo.style.display = 'none'
+          logo.style.opacity = '0'
+          logo.style.pointerEvents = 'none'
+        }
+      }
+    }
+
+    const interval = setInterval(removeWatermark, 300)
+    return () => clearInterval(interval)
+  }, [])
+
 
   const stack = {
     frontend: [
@@ -62,7 +101,7 @@ export default function Tecnologias() {
     backend: [
       { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
       { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'FastAPI', logo: 'https://img.icons8.com/color/48/000000/api.png' },
+      { name: 'FastAPI', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg', invert: true },
       { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
       { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
       { name: 'Oracle DB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg' },
@@ -71,10 +110,10 @@ export default function Tecnologias() {
       { name: 'GraphQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' }
     ],
     businessIntelligence: [
-      { name: 'Power BI', logo: 'https://img.icons8.com/color/48/000000/power-bi.png' },
-      { name: 'Tableau', logo: 'https://img.icons8.com/color/48/000000/tableau-software.png' },
+      { name: 'Power BI', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg' },
+      { name: 'Tableau', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tableau.svg' },
       { name: 'QlikView', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/qlik.svg', invert: true },
-      { name: 'Chart.js', logo: 'https://img.icons8.com/color/48/000000/combo-chart.png' },
+      { name: 'Chart.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chartjs/chartjs-original.svg' },
       { name: 'Looker', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/looker.svg', invert: true }
     ],
     cloud: [
@@ -87,8 +126,8 @@ export default function Tecnologias() {
     marketing: [
       { name: 'Facebook / Meta Ads', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg' },
       { name: 'Google Ads', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
-      { name: 'Market Analysis', logo: 'https://img.icons8.com/color/48/000000/combo-chart.png' },
-      { name: 'Content creator', logo: 'https://img.icons8.com/color/48/000000/camera.png' }
+      { name: 'Market Analysis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chartjs/chartjs-original.svg' },
+      { name: 'Content creator', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg' }
     ]
   }
 
@@ -157,26 +196,61 @@ export default function Tecnologias() {
   }, { scope: containerRef })
 
   return (
-    <div ref={containerRef} style={{ paddingTop: '80px' }}>
-      <section style={{ background: 'transparent', color: 'var(--text-dark)', padding: '6rem 2rem 4rem', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'var(--primary)', filter: 'blur(200px)', opacity: 0.1, zIndex: 0 }}></div>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <span className="tech-label" style={{ 
-            color: 'var(--accent)', fontWeight: 'bold', letterSpacing: '2px', 
-            textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' 
-          }}>
-            Nuestro Stack
-          </span>
-          <h1 className="tech-title" style={{ fontSize: '3.5rem', marginBottom: '1.5rem', maxWidth: '800px', marginInline: 'auto' }}>
-            Tecnologías modernas, rendimiento sólido
-          </h1>
-          <p className="tech-subtitle" style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto' }}>
-            No nos casamos con ninguna herramienta, pero elegimos las mejores para cada problema.
-          </p>
+    <div ref={containerRef} style={{ paddingTop: '80px', position: 'relative', overflow: 'hidden' }}>
+      {/* 3D Robot Background */}
+      <div 
+        className="robot-bg-container"
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          right: '-50px',
+          width: '550px',
+          height: '600px',
+          opacity: 0.85,
+          zIndex: 0,
+          pointerEvents: 'auto'
+        }}
+      >
+        {scriptLoaded && (
+          <spline-viewer
+            ref={viewerRef}
+            url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            style={{ width: '100%', height: '100%' }}
+          />
+        )}
+      </div>
+
+      <section style={{ background: 'transparent', color: 'var(--text-dark)', padding: '8rem 2rem 4rem', position: 'relative', zIndex: 1 }}>
+        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'var(--primary)', filter: 'blur(200px)', opacity: 0.1, zIndex: -1 }}></div>
+        <div className="container" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '3rem',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          <div style={{ textAlign: 'left' }}>
+            <span className="tech-label" style={{ 
+              color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '2px', 
+              textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' 
+            }}>
+              Nuestro Stack
+            </span>
+            <h1 className="tech-title" style={{ fontSize: '3.3rem', marginBottom: '1.5rem', lineHeight: '1.1', fontWeight: '800' }}>
+              Tecnologías modernas, rendimiento <HandwrittenHighlight type="underline" color="var(--primary)" delay={0.6}>sólido</HandwrittenHighlight>
+            </h1>
+            <p className="tech-subtitle" style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '500px', lineHeight: '1.6' }}>
+              No nos casamos con ninguna herramienta, pero elegimos las mejores para cada problema.
+            </p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'visible', position: 'relative', zIndex: 2 }}>
+            <TechSphere3D />
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: '6rem 2rem', background: 'transparent' }}>
+      <section style={{ padding: '6rem 2rem', background: 'transparent', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <TechCategory title="Frontend & UI" techs={stack.frontend} />
           <TechCategory title="Backend & API" techs={stack.backend} />

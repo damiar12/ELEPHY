@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
+import HandwrittenHighlight from '../components/HandwrittenHighlight'
 
 const ServiceCard = ({ icon, title, description, tags }) => (
   <div className="card service-card" style={{ textAlign: 'left', padding: '2.5rem', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
@@ -35,6 +36,7 @@ const ServiceCard = ({ icon, title, description, tags }) => (
 
 export default function Servicios() {
   const containerRef = useRef(null)
+  const contactHref = 'mailto:elephysoftware@gmail.com?subject=Consulta%20t%C3%A9cnica%20gratuita&body=Hola%20Elephy%2C%0A%0AMe%20gustar%C3%ADa%20reservar%20una%20consulta%20t%C3%A9cnica%20gratuita%20para%20valorar%20mi%20proyecto.%0A%0AGracias.'
 
   const servicios = [
     {
@@ -148,15 +150,17 @@ export default function Servicios() {
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'var(--primary)', filter: 'blur(200px)', opacity: 0.1, zIndex: 0 }}></div>
         <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
           <span className="servicios-label" style={{ 
-            color: 'var(--accent)', fontWeight: 'bold', letterSpacing: '2px', 
+            color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '2px', 
             textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' 
           }}>
             Nuestros Servicios
           </span>
           <h1 className="servicios-title" style={{ fontSize: '3.5rem', marginBottom: '1.5rem', maxWidth: '800px', marginInline: 'auto' }}>
-            Tu Ecosistema Digital <span style={{ 
-              background: 'var(--gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' 
-            }}>360º</span>
+            Tu Ecosistema Digital <HandwrittenHighlight type="double-underline" color="var(--primary)" delay={0.6}>
+              <span style={{ 
+                background: 'var(--gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' 
+              }}>360º</span>
+            </HandwrittenHighlight>
           </h1>
           <p className="servicios-subtitle" style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto' }}>
             Sistemas diseñados para vender, no solo para "estar en internet".
@@ -199,7 +203,7 @@ export default function Servicios() {
             <div style={{ position: 'absolute', bottom: -40, left: -20, width: 150, height: 150, background: 'var(--accent)', borderRadius: '50%', opacity: 0.1 }}></div>
             <h3 style={{ fontSize: '2rem', marginBottom: '1rem', position: 'relative' }}>¿Listo para escalar?</h3>
             <p style={{ marginBottom: '2rem', color: 'var(--text-gray)', position: 'relative' }}>Agenda una consultoría técnica gratuita de 30 minutos.</p>
-            <button className="btn-primary" style={{ position: 'relative', width: '100%' }}>Reservar Llamada</button>
+            <a href={contactHref} className="btn-primary" style={{ position: 'relative', width: '100%', display: 'inline-block', textAlign: 'center' }}>Reservar consulta</a>
           </div>
         </div>
       </section>

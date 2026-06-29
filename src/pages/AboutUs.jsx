@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
+import HandwrittenHighlight from '../components/HandwrittenHighlight'
 
 const Stat = ({ prefix = '', target, suffix = '', label }) => (
   <div className="about-stat" style={{ textAlign: 'center' }}>
@@ -15,20 +16,20 @@ const Stat = ({ prefix = '', target, suffix = '', label }) => (
 )
 
 const ValueCard = ({ svgIcon, title, desc, accentColor }) => (
-  <div className="value-card" style={{ 
-    padding: '2.5rem 2rem', 
+  <div className="value-card" style={{
+    padding: '2.5rem 2rem',
     background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%)',
-    borderRadius: '24px', 
-    border: '1px solid var(--border-color)', 
+    borderRadius: '24px',
+    border: '1px solid var(--border-color)',
     backdropFilter: 'blur(20px)',
     cursor: 'pointer',
     position: 'relative',
     overflow: 'hidden'
   }}>
     <div style={{ position: 'absolute', top: 0, left: 0, width: '120px', height: '120px', background: accentColor, filter: 'blur(60px)', opacity: 0.15, borderRadius: '50%' }}></div>
-    
-    <div className="value-card-icon" style={{ 
-      width: '52px', height: '52px', borderRadius: '16px', background: `${accentColor}1A`, 
+
+    <div className="value-card-icon" style={{
+      width: '52px', height: '52px', borderRadius: '16px', background: `${accentColor}1A`,
       color: accentColor, border: `1px solid ${accentColor}33`, display: 'flex', alignItems: 'center', justifyContent: 'center',
       marginBottom: '1.5rem', position: 'relative', zIndex: 2
     }}>
@@ -139,7 +140,9 @@ export default function AboutUs() {
       <section style={{ background: 'transparent', color: 'var(--text-dark)', padding: '6rem 2rem 6rem', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'var(--primary)', filter: 'blur(200px)', opacity: 0.1, zIndex: 0 }}></div>
         <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
-          <h1 className="about-hero-title" style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>Más que código, creamos <span style={{ color: 'var(--accent)' }}>valor</span>.</h1>
+          <h1 className="about-hero-title" style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>
+            Más que código, creamos <HandwrittenHighlight type="circle" color="var(--primary)" delay={0.6}>valor</HandwrittenHighlight>.
+          </h1>
           <p className="about-hero-desc" style={{ fontSize: '1.25rem', color: '#94A3B8', maxWidth: '700px', margin: '0 auto' }}>
             Nacimos con una misión clara: democratizar la tecnología de alto nivel para Pymes y Startups que quieren liderar sus mercados.
           </p>
@@ -149,7 +152,7 @@ export default function AboutUs() {
       {/* Stats */}
       <section className="about-stats" style={{ transform: 'translateY(-50px)' }}>
         <div className="container">
-          <div style={{ 
+          <div style={{
             background: 'var(--surface)', padding: '3rem', borderRadius: '24px', boxShadow: '0 0 30px rgba(0,0,0,0.5)',
             border: '1px solid var(--border-color)', backdropFilter: 'blur(10px)',
             display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem'
@@ -175,10 +178,12 @@ export default function AboutUs() {
               Hoy, somos un equipo distribuido de ingenieros, diseñadores y estrategas obsesionados con la calidad, la velocidad y, sobre todo, la honestidad técnica.
             </p>
           </div>
-          <div className="about-story-image" style={{ height: '400px', background: 'rgba(79, 209, 197, 0.05)', borderRadius: '24px', position: 'relative', border: '1px solid var(--border-color)' }}>
-             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.5rem', opacity: 0.5 }}>
-                [Foto de Equipo / Oficina Moderna]
-             </div>
+          <div className="about-story-image" style={{ minHeight: '400px', borderRadius: '24px', position: 'relative', overflow: 'hidden', border: '1px solid var(--border-color)', background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.88) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+            <img
+              src="/images/portadanegocio.jpg"
+              alt="Equipo Elephy"
+              style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+            />
           </div>
         </div>
       </section>
@@ -186,25 +191,25 @@ export default function AboutUs() {
       {/* Values */}
       <section style={{ padding: '6rem 2rem', background: 'transparent' }}>
         <div className="container">
-          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '4rem', color: 'var(--text-dark)' }}>Nuestros Principios</h2>
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '4rem', color: 'var(--text-dark)' }}>Nuestros principios</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
-            <ValueCard 
-              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>} 
-              accentColor="#10B981" 
-              title="Resultados > Burocracia" 
-              desc="Evitamos las reuniones innecesarias. Nos centramos en entregar software que funcione y aporte valor desde la semana 1." 
+            <ValueCard
+              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>}
+              accentColor="#10B981"
+              title="Resultados > Burocracia"
+              desc="Evitamos las reuniones innecesarias. Nos centramos en entregar software que funcione y aporte valor desde la semana 1."
             />
-            <ValueCard 
-              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>} 
-              accentColor="#3B82F6" 
-              title="Transparencia Radical" 
-              desc="Sin letra pequeña. Te explicamos claramente qué arquitectura usamos, por qué la elegimos, y cuánto va a costar sin sorpresas." 
+            <ValueCard
+              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>}
+              accentColor="#3B82F6"
+              title="Transparencia Radical"
+              desc="Sin letra pequeña. Te explicamos claramente qué arquitectura usamos, por qué la elegimos, y cuánto va a costar sin sorpresas."
             />
-            <ValueCard 
-              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>} 
-              accentColor="#F59E0B" 
-              title="Innovación Pragmática" 
-              desc="No implementamos la tecnología de moda por ego. Construimos infraestructuras robustas que tu negocio realmente necesita para escalar." 
+            <ValueCard
+              svgIcon={<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>}
+              accentColor="#F59E0B"
+              title="Innovación Pragmática"
+              desc="No implementamos la tecnología de moda por ego. Construimos infraestructuras robustas que tu negocio realmente necesita para escalar."
             />
           </div>
         </div>

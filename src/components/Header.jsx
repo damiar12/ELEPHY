@@ -2,20 +2,20 @@ import React, { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { gsap, ScrollTrigger, useGSAP } from '../gsapSetup'
 
+const contactHref = 'mailto:elephysoftware@gmail.com?subject=Solicitud%20de%20auditor%C3%ADa%20gratuita&body=Hola%20Elephy%2C%0A%0AQuiero%20solicitar%20una%20auditor%C3%ADa%20gratuita%20para%20mi%20proyecto.%0A%0AGracias.'
+
 export default function Header() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
+  const location = useLocation()
+  const isHome = location.pathname === '/'
   const headerRef = useRef(null)
 
   useGSAP(() => {
-    // 1. Drop down entrance when the site loads
     gsap.from(headerRef.current, {
       y: '-100%',
       duration: 0.8,
       ease: 'power3.out'
     })
 
-    // 2. Shrink and blur increasing on scroll
     ScrollTrigger.create({
       start: 'top -50',
       end: 99999,
@@ -30,7 +30,7 @@ export default function Header() {
     <header className="header" ref={headerRef}>
       <nav>
         <Link to="/" className="logo header-logo">
-          <img src="/images/logo-eleephy.png" alt="Elephy" />
+          <img src="/images/logoelephy.png" alt="Elephy Desarrollo de Software" />
         </Link>
         <ul className="nav-links">
           {!isHome && <li><Link to="/">Inicio</Link></li>}
@@ -38,7 +38,7 @@ export default function Header() {
           <li><Link to="/industrias">Industrias</Link></li>
           <li><Link to="/tecnologias">Tecnologías</Link></li>
           <li><Link to="/about-us">About Us</Link></li>
-          <li><Link to="/#contacto" className="cta-btn-nav">Auditoría Gratuita</Link></li>
+          <li><a href={contactHref} className="cta-btn-nav">Auditoría Gratuita</a></li>
         </ul>
       </nav>
     </header>

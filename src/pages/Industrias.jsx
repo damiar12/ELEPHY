@@ -1,35 +1,35 @@
-import React, { useRef } from 'react'
+﻿import React, { useRef } from 'react'
 import { gsap, useGSAP } from '../gsapSetup'
 
 const IndustryShowcase = ({ title, description, benefits, align = 'left', color = '#4F46E5', icon, image }) => {
   const isLeft = align === 'left';
   return (
-    <div className="industry-showcase" style={{ 
-      display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center', marginBottom: '8rem' 
+    <div className="industry-showcase" style={{
+      display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center', marginBottom: '8rem'
     }}>
       <div style={{ order: isLeft ? 1 : 2, position: 'relative' }}>
         <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--text-dark)', display: 'flex', alignItems: 'center', gap: '1.5rem', lineHeight: '1.2' }}>
-          <div style={{ 
+          <div style={{
             width: '64px', height: '64px', borderRadius: '16px', background: `${color}15`, color: color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: `1px solid ${color}30`
           }}>
             {icon}
           </div>
-          <span style={{flex: 1}}>{title}</span>
+          <span style={{ flex: 1 }}>{title}</span>
         </h3>
         <p style={{ fontSize: '1.1rem', color: 'var(--text-gray)', margin: '1.5rem 0', lineHeight: '1.6' }}>{description}</p>
         <ul style={{ paddingLeft: '0', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {benefits.map(b => (
             <li key={b} className="industry-benefit" style={{ fontSize: '1.05rem', fontWeight: '500', color: '#cbd5e1', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
-               {b}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+              {b}
             </li>
           ))}
         </ul>
       </div>
-      <div className="industry-img-wrapper" style={{ 
-        order: isLeft ? 2 : 1, 
-        background: `linear-gradient(135deg, ${color}11 0%, ${color}33 100%)`, 
-        height: '380px', borderRadius: '24px', 
+      <div className="industry-img-wrapper" style={{
+        order: isLeft ? 2 : 1,
+        background: `linear-gradient(135deg, ${color}11 0%, ${color}33 100%)`,
+        height: '380px', borderRadius: '24px',
         border: `1px solid ${color}40`, backdropFilter: 'blur(10px)',
         position: 'relative', overflow: 'hidden',
         boxShadow: `0 20px 40px -10px ${color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -52,7 +52,7 @@ const industries = [
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>,
     title: "Gestorías y Asesorías",
     description: "Digitalizamos procesos administrativos: facturación automática, conciliación y gestión documental segura. Reduce tiempos y errores humanos.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/images/gestoria-imagen (2).jpg",
     color: "var(--primary)",
     features: [
       "Automatización de facturas y conciliaciones",
@@ -62,9 +62,9 @@ const industries = [
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>,
-    title: "Negocios tradicionales (Construcción, Fontanería, Carpintería)",
+    title: "Negocios tradicionales",
     description: "Soluciones para comercios locales: digitaliza reservas, gestión de clientes y presupuestos. Ahorra papel y tiempo, gana profesionalidad.",
-    image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/images/negociostradicionales.jpg",
     color: "#10B981",
     features: [
       "CRM sencillo para reservas y presupuestos",
@@ -76,7 +76,7 @@ const industries = [
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>,
     title: "Logística e Industria 4.0",
     description: "Automatizamos cadenas de suministro con IoT y dashboards en tiempo real. Reduce tiempos de entrega hasta un 30% y optimiza stock.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/images/logisticaindustria.jpg",
     color: "#4F46E5",
     features: [
       "Trazabilidad end-to-end con RFID/IoT",
@@ -88,7 +88,7 @@ const industries = [
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>,
     title: "Retail & E-commerce",
     description: "Experiencias de compra omnicanal. Unificamos tu tienda física y online para maximizar conversiones y fidelizar clientes.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/images/ecommerce.jpg",
     color: "#EC4899",
     features: [
       "POS (Punto de Venta) personalizado y sincronizado",
@@ -100,6 +100,7 @@ const industries = [
 
 export default function Industrias() {
   const containerRef = useRef(null)
+  const contactHref = 'mailto:elephysoftware@gmail.com?subject=Evaluar%20caso%20de%20mi%20industria&body=Hola%20Elephy%2C%0A%0AMe%20gustar%C3%ADa%20que%20evaluaseis%20mi%20caso%20y%20ver%20c%C3%B3mo%20podemos%20digitalizar%20mi%20negocio.%0A%0AGracias.'
 
   useGSAP(() => {
     // Hero header entrance
@@ -202,9 +203,9 @@ export default function Industrias() {
       <section style={{ background: 'transparent', color: 'var(--text-dark)', padding: '6rem 2rem 4rem', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'var(--primary)', filter: 'blur(200px)', opacity: 0.1, zIndex: 0 }}></div>
         <div className="container" style={{ textAlign: 'center' }}>
-          <span className="industrias-label" style={{ 
-            color: 'var(--accent)', fontWeight: 'bold', letterSpacing: '2px', 
-            textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' 
+          <span className="industrias-label" style={{
+            color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '2px',
+            textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem'
           }}>
             Soluciones de nicho probadas
           </span>
@@ -220,7 +221,7 @@ export default function Industrias() {
       <section style={{ padding: '6rem 2rem' }}>
         <div className="container">
           {industries.map((ind, i) => (
-            <IndustryShowcase 
+            <IndustryShowcase
               key={ind.title}
               title={ind.title}
               align={i % 2 === 0 ? 'left' : 'right'}
@@ -232,17 +233,18 @@ export default function Industrias() {
             />
           ))}
 
-          <div className="industrias-bottom-cta" style={{ 
-            marginTop: '8rem', textAlign: 'center', background: 'var(--surface)', border: '1px solid var(--border-color)', backdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px' 
+          <div className="industrias-bottom-cta" style={{
+            marginTop: '8rem', textAlign: 'center', background: 'var(--surface)', border: '1px solid var(--border-color)', backdropFilter: 'blur(10px)', padding: '4rem 2rem', borderRadius: '24px'
           }}>
             <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--text-dark)' }}>¿Tu industria no está en la lista?</h3>
             <p style={{ color: 'var(--text-gray)', marginBottom: '2rem', maxWidth: '600px', marginInline: 'auto' }}>
               Nos encantan los nuevos retos. La tecnología es universal, nosotros la adaptamos a tu contexto.
             </p>
-            <button className="btn-primary">Contáctanos para evaluar tu caso</button>
+            <a href={contactHref} className="btn-primary" style={{ display: 'inline-block' }}>Contáctanos para evaluar tu caso</a>
           </div>
         </div>
       </section>
     </div>
   )
 }
+
