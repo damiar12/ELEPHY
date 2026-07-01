@@ -75,6 +75,12 @@ export default function Servicios() {
       description: "No solo programamos, diseñamos experiencias. Prototipado, sistemas de diseño y testing con usuarios para asegurar la usabilidad.",
       tags: ["Figma", "Prototyping", "User Research"]
     }
+    ,{
+      icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"/></svg>,
+      title: "Pentest As-A-Service",
+      description: "Evaluaciones de seguridad continuas sobre tu infraestructura digital.Anticipamos vulnerabilidades mediante simulaciones de ataque autónomas.Análisis de exposición en tiempo real mediante panel de control.",
+      tags: ["Red Team", "OWASP", "CVE Scanning"]
+}
   ]
 
   useGSAP(() => {
